@@ -63,7 +63,6 @@ function getDiskInfo
     local disk_size_bytes=$(df /home/$USER | awk 'END{A=($2*1000); print A}')
     treshold_percentage_bytes=$(($disk_size_bytes*$treshold_percentage/100))
     partition_name=$(df /home/$USER | awk '/dev/ { print $1 }')
-    #storage=$(echo $partition_name | cut -c -8)
     disk_name=$(inxi -d | grep /dev/sdb | grep -o -P '(?<=model: ).*(?= size)')
 }
 
